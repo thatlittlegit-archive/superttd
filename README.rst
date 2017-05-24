@@ -4,7 +4,7 @@ SuperTTD
 
 Getting Started
 ###############
-1. Install Rust. Once Rust is installed, continue.
+1. Install Rust, SFML and CSFML. Once those are installed, continue. If you are on Linux, try `this guide <https://blaxpirit.com/blog/12/build-sfml-and-csfml-on-linux.html>`_.
 2. Run `cargo build`. It should compile an executable.
 3. Run the executable.
 
