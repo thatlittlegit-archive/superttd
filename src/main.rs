@@ -1,7 +1,7 @@
 extern crate sfml;
 
 use sfml::graphics::RenderWindow;
-use sfml::window::{VideoMode, ContextSettings, style};
+use sfml::window::{VideoMode, ContextSettings, Event, style};
 
 fn main() {
    // CONSTANTS
@@ -24,5 +24,11 @@ fn main() {
 
     window.display();
 
-    loop {}
+    loop {
+        for event in window.events() {
+            if event == Event::Closed {
+                return;
+            }
+        }
+    }
 }
