@@ -3,6 +3,8 @@ extern crate sfml;
 use sfml::graphics::RenderWindow;
 use sfml::window::{VideoMode, ContextSettings, Event, style};
 
+mod camera;
+
 fn main() {
    // CONSTANTS
    let antialiasing = 0;
@@ -23,6 +25,11 @@ fn main() {
     window.set_vertical_sync_enabled(vsync);
 
     window.display();
+
+    //
+    // Initialize cameras
+    //
+    camera::new(1, 2, 3, false);
 
     loop {
         for event in window.events() {
