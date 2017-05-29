@@ -6,11 +6,14 @@ use sfml::window::{VideoMode, ContextSettings, Event, style};
 mod camera;
 
 fn main() {
+   print!("SuperTTD! Version 0.1.0\n");
    // CONSTANTS
    let antialiasing = 0;
    let game_width = 800;
    let game_height = 600;
    let vsync = true;
+
+   print!("Antialiasing: {0} Width/Height: {1}/{2} Vsync: {3}\n", antialiasing, game_width, game_height, vsync);
 
    let settings = ContextSettings {
        antialiasing_level: antialiasing,
