@@ -32,7 +32,7 @@ fn main() {
     //
     // Initialize cameras
     //
-    camera::new(1, 2, 3, Some(window));
+    camera::Camera::new(1, 2, 3, Some(&window));
 
     loop {
         for event in window.events() {
