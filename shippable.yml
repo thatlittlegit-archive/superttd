@@ -1,20 +1,15 @@
 language: none
 
 build:
+  pre_ci:
+    - docker build -t superttd_rust .
   pre_ci_boot:
-    image_name: scorpil/rust
+    image_name: superttd_rust
     image_tag: stable
     pull: true
     options: "-e HOME=/root"
 
   ci:
-    # Get libsfml-dev
-    - sudo apt install -y libsfml-dev build-essential cmake git libx11-dev freeglut3-dev libxcb-image0-dev libudev-dev libjpeg-turbo8-dev libopenal-dev libsndfile1-dev libfreetype6-dev
-    - cd ..
-    - cd ..
-    - git clone https://github.com/SFML/CSFML.git
-    - cd CSFML
-    - 
     - cargo build
     # TODO Add unit testing
 
