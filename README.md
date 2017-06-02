@@ -1,4 +1,6 @@
 # SuperTTD
+[![Shippable](https://img.shields.io/shippable/58d4314b56628806009ff496.svg)](https://app.shippable.com/bitbucket/wapidstyle/superttd)
+[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt)
 *An expandable version of OpenTTD!*
 
 ## Getting Started
@@ -9,5 +11,6 @@
 
 ## Licenses
 
-The code of SuperTTD is under the License. The graphics
-are under the License. **See the license file for more info.**
+The code of SuperTTD is under the LGPL 2.1 License. The graphics
+are under the Creative Commons Attribution-NoCommercial-ShareAlike
+4.0 International License. **See the license file for more info.*
