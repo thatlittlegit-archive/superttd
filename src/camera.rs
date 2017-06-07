@@ -3,6 +3,7 @@
 //
 extern crate sfml;
 
+use std::env::current_dir;
 use sfml::graphics::RenderWindow;
 use map::Map;
 
@@ -29,5 +30,12 @@ impl<'a> Camera<'a> {
     ///
     pub fn new(x: u16, y: u16, angle: u8, window: Option<&RenderWindow>, map: Map) -> Camera {
         Camera { x: x, y: y, angle: angle, window: window, map: map }
+    }
+
+    ///
+    /// Renders the screen. Takes no arguments.
+    ///
+    pub fn render() {
+        println!("{}", current_dir().unwrap().to_str().unwrap());
     }
 }

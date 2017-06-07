@@ -39,6 +39,7 @@ fn main() {
     camera::Camera::new(1, 2, 3, Some(&window), Map::random());
 
     loop {
+	camera::Camera::render();
         for event in window.events() {
             if event == Event::Closed {
                 return;
