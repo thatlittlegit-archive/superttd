@@ -4,6 +4,10 @@ use sfml::graphics::RenderWindow;
 use sfml::window::{VideoMode, ContextSettings, Event, style};
 
 mod camera;
+mod map;
+
+use camera::Camera;
+use map::Map;
 
 fn main() {
    print!("SuperTTD! Version 0.1.0\n");
@@ -32,7 +36,7 @@ fn main() {
     //
     // Initialize cameras
     //
-    camera::Camera::new(1, 2, 3, Some(&window));
+    camera::Camera::new(1, 2, 3, Some(&window), Map::random());
 
     loop {
         for event in window.events() {
