@@ -1,7 +1,0 @@
-[package]
-name = "superttd"
-version = "0.1.0"
-authors = ["wapidstyle <wapidstyle@live.ca>"]
-
-[dependencies]
-sfml = "0.12.0"

@@ -1,12 +1,25 @@
 # SuperTTD
-[![Shippable](https://img.shields.io/shippable/58d4314b56628806009ff496.svg)](https://app.shippable.com/bitbucket/wapidstyle/superttd)
-[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt)
+[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt)  
 *An expandable version of OpenTTD!*
 
 ## Getting Started
-1. Install Rust, SFML and CSFML. Once those are installed, continue. 
-> If you are on Linux, try [this guide](https://blaxpirit.com/blog/12/build-sfml-and-csfml-on-linux.html), and/or (IDK which) installing the appropiate libsfml-dev package.
-2. Run `cargo build`. It should compile an executable.
+1. Install the appropiate libraries.
+#### Linux
+```shell
+sudo apt install libsfml-dev # Debian/Ubuntu
+sudo pacman -S sfml          # Arch Linux
+sudo dnf install SFML        # Fedora (might not work)
+```
+#### macOS
+```shell
+brew install sfml            # Might work
+```
+#### Windows
+```cmd
+REM See https://www.sfml-dev.org/tutorials/2.4/start-vc.php
+REM or https://www.sfml-dev.org/tutorials/2.4/start-cb.php
+```
+2. Run `make`. It should compile an executable.
 3. Run the executable.
 
 ## Licenses
