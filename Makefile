@@ -7,12 +7,14 @@
 CXX=g++
 LD=g++ # TODO: Make compatable with pure ld
 
-CXX_FLAGS=-c
+CXX_FLAGS=-c -Wall
 LD_FLAGS=-o superttd
 
 RM=rm
 
-superttd: clean build
+superttd:
+	@make -s clean build
+	@echo "\t--- FINISHED"
 
 clean:
 	@echo "\t--- clean"
@@ -22,3 +24,5 @@ build:
 	@echo "\t--- build"
 	@for file in $$(ls src/*.cpp);do echo "\tCXX "$$file;$(CXX) $(CXX_FLAGS) $$file;done
 	@echo "\tLD "$$(ls *.o);$(LD) $(LD_FLAGS) $$(ls *.o)
+
+.PHONY: superttd
