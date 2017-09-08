@@ -8,7 +8,7 @@ CXX=g++
 LD=g++ # TODO: Make compatable with pure ld
 
 CXX_FLAGS=-c -Wall
-LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics
+LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
 
