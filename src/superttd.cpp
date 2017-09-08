@@ -1,8 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include "spriteman.hpp"
+#include <vector>
+
+using namespace std::vector;
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
+
+	std::vector<sf::Sprite> sprites = fetchSprites("sprites");
 
 	while (window.isOpen())
 		{
