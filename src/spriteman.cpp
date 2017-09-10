@@ -5,9 +5,10 @@
 #include <iostream>
 
 std::vector<sf::Sprite> fetchSprites(std::string spriteFolder) {
-	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yaml")["sprites"];
+	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
 
-  for(unsigned int index; index < sprites.size(); index++) {
-		std::cout << index << '\n';
+  for(unsigned int index = 0; index < sprites.size(); index++) {
+		std::cout << sprites[index] << '\n';
 	}
+	std::cout << std::endl;
 }
