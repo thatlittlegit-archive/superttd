@@ -2,3 +2,12 @@ sprites:
 - filename: 'Earth_surface_v.0.png'
   world: 0 # Earth
   id: 'earth_ground'
+- filename: 'Moon_boulder_v.1.png'
+  world: 1 # Moon
+  id: 'moon_boulder'
+- filename: 'Moon_crater_v.1.png'
+  world: 1 # Moon
+  id: 'moon_crater'
+- filename: 'Moon_surface_v.1.png'
+  world: 1 # Moon
+  id: 'moon_surface'
