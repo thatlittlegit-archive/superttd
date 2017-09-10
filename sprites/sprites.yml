@@ -1,2 +1,4 @@
 sprites:
-  - world
+- filename: 'Earth_surface_v.0.png'
+  world: 0 # Earth
+  id: 'earth_ground'
