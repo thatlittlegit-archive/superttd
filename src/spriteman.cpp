@@ -50,7 +50,7 @@ namespace SuperTTD {
 	};
 }
 
-std::vector<sf::Sprite> fetchSprites(string spriteFolder) {
+std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder) {
 	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
 
   for(unsigned int index = 0; index < sprites.size(); index++) {

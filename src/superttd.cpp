@@ -8,7 +8,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
 
-	vector<sf::Sprite> sprites = fetchSprites("sprites");
+	vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
 
 	while (window.isOpen())
 		{
