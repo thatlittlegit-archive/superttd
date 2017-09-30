@@ -11,18 +11,18 @@ CXX_FLAGS=-c -Wall -Iinclude
 LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
+ECHO=echo -e
 
 superttd:
 	@make -s clean build
-	@echo "\t--- FINISHED"
+	@$(ECHO) "\t --- FINISHED"
 
 clean:
-	@echo "\t--- clean"
-	@-echo "\tRM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
+	@-ls *.o >/dev/null 2>/dev/null && $(ECHO) "\t --- clean" && $(ECHO) "\t RM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
 
 build:
-	@echo "\t--- build"
-	@for file in $$(ls src/*.cpp);do echo "\tCXX "$$file;$(CXX) $(CXX_FLAGS) $$file;done
-	@echo "\tLD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
+	@$(ECHO) "\t --- build"
+	@for file in $$(ls src/*.cpp);do $(ECHO) "\t CXX "$$file;$(CXX) $(CXX_FLAGS) $$file;done
+	@$(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
 
 .PHONY: superttd
