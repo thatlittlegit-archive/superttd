@@ -1,11 +1,10 @@
 #
 # Makefile: Makefile for GNU Make.
 #
-
-# WINDOWS USERS: Run in GitBash. Report all errors.
+# Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
 
 CXX=g++
-LD=g++ # TODO: Make compatable with pure ld
+LD=g++
 
 CXX_FLAGS=-c -Wall -Iinclude
 LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
