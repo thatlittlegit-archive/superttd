@@ -8,13 +8,14 @@ using std::string;
 namespace SuperTTD {
 	class Sprite {
 	private:
+		void construct(string argFilename, unsigned int argWorld, string argId);
+	public:
 		string filename;
 	  int world;
 	  string id;
 		sf::Sprite associated;
+	  sf::Texture associatedTexture;
 
-		void construct(string argFilename, unsigned int argWorld, string argId);
-	public:
 		string getFilename();
 		int getWorld();
 		string getId();
@@ -24,6 +25,8 @@ namespace SuperTTD {
 		Sprite(string argFilename, int argWorld, string argId);
 
 		Sprite(YAML::Node yaml);
+
+	  Sprite(const Sprite &spriteobj);
 	};
 }
 

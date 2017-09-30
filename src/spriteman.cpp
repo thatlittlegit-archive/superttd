@@ -9,33 +9,28 @@ using std::string;
 namespace SuperTTD {
 	class Sprite {
 	private:
-		string filename;
-	  int world;
-	  string id;
-		sf::Sprite associated;
-
 		void construct(string argFilename, unsigned int argWorld, string argId) {
 			filename = argFilename;
 			world = argWorld;
 			id = argId;
 
 			try {
-				reloadSprite();
+				associated = reloadSprite();
 			} catch (const std::invalid_argument& e) {}
 		}
-
 	public:
-		string getFilename() { return filename; }
-		int getWorld() { return world; }
-		string getId() { return id; }
+	  string filename;
+	  unsigned int world;
+	  string id;
+	  sf::Sprite associated;
+	  sf::Texture associatedTexture;
 
-		sf::Sprite reloadSprite() {
-			sf::Texture texture;
+	  sf::Sprite reloadSprite() {
 
-			if(!texture.loadFromFile("sprites/" + filename)) {
+			if(!associatedTexture.loadFromFile("sprites/" + filename)) {
 				throw std::invalid_argument("Unable to load sprite");
 			} else {
-				associated.setTexture(texture);
+				associated.setTexture(associatedTexture);
 				return associated;
 			}
 		}
@@ -45,8 +40,14 @@ namespace SuperTTD {
 		}
 
 		Sprite(YAML::Node yaml) {
-			construct(yaml["filename"].as<string>(), yaml["world"].as<unsigned int>(), yaml["id"].as<string>());
+			construct(yaml["filename"].as<string>(),
+				  yaml["world"].as<unsigned int>(),
+				  yaml["id"].as<string>());
 		}
+
+	  Sprite(const Sprite &spriteobj) : associatedTexture(spriteobj.associatedTexture), associated(spriteobj.associated) {
+	    associated.setTexture(associatedTexture);
+	  }
 	};
 }
 
