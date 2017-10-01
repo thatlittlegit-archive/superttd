@@ -19,14 +19,13 @@ namespace SuperTTD {
 			} catch (const std::invalid_argument& e) {}
 		}
 	public:
-	  string filename;
-	  unsigned int world;
-	  string id;
-	  sf::Sprite associated;
-	  sf::Texture associatedTexture;
+		string filename;
+		unsigned int world;
+		string id;
+		sf::Sprite associated;
+		sf::Texture associatedTexture;
 
-	  sf::Sprite reloadSprite() {
-
+		sf::Sprite reloadSprite() {
 			if(!associatedTexture.loadFromFile("sprites/" + filename)) {
 				throw std::invalid_argument("Unable to load sprite");
 			} else {
@@ -34,7 +33,7 @@ namespace SuperTTD {
 				return associated;
 			}
 		}
-
+		
 		Sprite(string argFilename, int argWorld, string argId) {
 			construct(argFilename, argWorld, argId);
 		}
@@ -44,10 +43,11 @@ namespace SuperTTD {
 				  yaml["world"].as<unsigned int>(),
 				  yaml["id"].as<string>());
 		}
-
-	  Sprite(const Sprite &spriteobj) : associated(spriteobj.associated), associatedTexture(spriteobj.associatedTexture) {
-	    associated.setTexture(associatedTexture);
-	  }
+		
+		Sprite(const Sprite &spriteobj) : associated(spriteobj.associated),
+						  associatedTexture(spriteobj.associatedTexture) {
+			associated.setTexture(associatedTexture);
+		}
 	};
 }
 
@@ -55,9 +55,9 @@ std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder) {
 	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
 	std::vector<SuperTTD::Sprite> toReturn;
 
-  for(unsigned int index = 0; index < sprites.size(); index++) {
+	for(unsigned int index = 0; index < sprites.size(); index++) {
 		toReturn.push_back(SuperTTD::Sprite(sprites[index]));
 	}
-
+	
 	return toReturn;
 }

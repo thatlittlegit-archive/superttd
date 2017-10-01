@@ -11,22 +11,17 @@ namespace SuperTTD {
 		void construct(string argFilename, unsigned int argWorld, string argId);
 	public:
 		string filename;
-	  int world;
-	  string id;
+		int world;
+		string id;
 		sf::Sprite associated;
-	  sf::Texture associatedTexture;
-
-		string getFilename();
-		int getWorld();
-		string getId();
-
+		sf::Texture associatedTexture;
+		
 		sf::Sprite reloadSprite();
 
 		Sprite(string argFilename, int argWorld, string argId);
-
 		Sprite(YAML::Node yaml);
 
-	  Sprite(const Sprite &spriteobj);
+		Sprite(const Sprite &spriteobj);
 	};
 }
 
