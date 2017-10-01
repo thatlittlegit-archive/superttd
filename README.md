@@ -1,5 +1,5 @@
 # SuperTTD <img align="right" width="250" height="250" src="SuperTTD.png" alt="SuperTTD">
-[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt)  
+[![GPL License](https://img.shields.io/badge/license-GPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)  
 *An expandable version of OpenTTD!*
 
 ## Getting Started
