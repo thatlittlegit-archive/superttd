@@ -45,7 +45,7 @@ namespace SuperTTD {
 				  yaml["id"].as<string>());
 		}
 
-	  Sprite(const Sprite &spriteobj) : associatedTexture(spriteobj.associatedTexture), associated(spriteobj.associated) {
+	  Sprite(const Sprite &spriteobj) : associated(spriteobj.associated), associatedTexture(spriteobj.associatedTexture) {
 	    associated.setTexture(associatedTexture);
 	  }
 	};
