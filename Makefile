@@ -4,9 +4,11 @@
 # Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
 
 CXX=g++
+CC=gcc
 LD=g++
 
-CXX_FLAGS=-c -Wall -Iinclude
+WARNINGS=-Wall
+CXX_FLAGS=$(WARNINGS) -c -Iinclude
 LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
@@ -14,6 +16,7 @@ ECHO=echo -e
 
 superttd:
 	@ls .depsok >/dev/null 2>/dev/null || make -s testdeps
+	@ls .ifnewer >/dev/null 2>/dev/null || make -s ifnewer
 	@make -s clean build
 	@$(ECHO) "\t --- FINISHED"
 
@@ -26,6 +29,12 @@ testdeps:
 	@for file in $$(ls testdeps.* a.out 2>/dev/null); do $(ECHO) '\t RM '$$file && rm $$file; done
 	@$(ECHO) 'ok' > .depsok
 	@$(ECHO) '\t # .depsok created'
+
+ifnewer:
+	@$(ECHO) '\t --- ifnewer'
+	@$(ECHO) '\t CC src/ifnewer.c'
+	@$(CC) $(WARNINGS) src/ifnewer.c -o .ifnewer
+	@$(ECHO) '\t # .ifnewer compiled'
 
 clean:
 	@-ls *.o >/dev/null 2>/dev/null && $(ECHO) "\t --- clean" && $(ECHO) "\t RM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
