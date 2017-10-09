@@ -17,7 +17,7 @@ ECHO=echo -e
 superttd:
 	@ls .depsok >/dev/null 2>/dev/null || make -s testdeps
 	@ls .ifnewer >/dev/null 2>/dev/null || make -s ifnewer
-	@make -s clean build
+	@make -s build
 	@$(ECHO) "\t --- FINISHED"
 
 testdeps:
@@ -41,7 +41,7 @@ clean:
 
 build:
 	@$(ECHO) "\t --- build"
-	@for file in $$(ls src/*.cpp);do $(ECHO) "\t CXX "$$file;$(CXX) $(CXX_FLAGS) $$file;done
+	@for file in $$(ls src/*.cpp);do ./.ifnewer $$file $$(echo $$file | awk -F/ '{print $$2".o"}' | awk -F. '{print $$1"."$$3}') 2>/dev/null || ($(ECHO) "\t CXX "$$file && $(CXX) $(CXX_FLAGS) $$file);done
 	@$(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
 
 .PHONY: superttd
