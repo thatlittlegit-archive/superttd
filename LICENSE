@@ -1,6 +1,7 @@
 SuperTTD's main code is under the GNU General Public License, 2.0.
 SuperTTD's graphics are under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
-[GNU G.P.L. is from the program 'lice-js' at https://npmjs.com/package/lice-js. CC At-NC-SA is directly downloaded with cURL and appended with zsh, see zsh.org]
+[GNU G.P.L. is from the program 'lice-js' at https://npmjs.com/package/lice-js . CC 
+At-NC-SA is directly downloaded with cURL and appended with zsh, see zsh.org]
 The GNU General Public License begins at line 7 of this file.
 The Creative Commons Attribution-NonCommercial-ShareAlike is at line 335 of this file.
 ========================================================================================================================
