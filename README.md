@@ -6,13 +6,13 @@
 1. Install the appropiate libraries.
 #### Linux
 ```shell
-sudo apt install libsfml-dev libyaml-cpp-dev # Debian/Ubuntu
-sudo pacman -S sfml yaml-cpp                 # Arch Linux
-sudo dnf install SFML yaml-cpp               # Fedora (might not work)
+sudo apt install libsfml-dev libyaml-cpp-dev boost # Debian/Ubuntu
+sudo pacman -S sfml yaml-cpp boost                 # Arch Linux
+sudo dnf install SFML yaml-cpp boost               # Fedora (might not work)
 ```
 #### macOS
 ```shell
-brew install sfml yaml-cpp                   # Might work
+brew install sfml yaml-cpp boost                   # Might work
 ```
 #### Windows
 ```cmd
@@ -21,7 +21,8 @@ REM or https://www.sfml-dev.org/tutorials/2.4/start-cb.php
 
 REM Then, build https://github.com/jbeder/yaml-cpp.
 ```
-2. Run `make`. It should compile an executable.
+2. Run `make`. It should compile an executable. The `testdeps`
+should only run the first time.
 3. Run the executable.
 
 ## Licenses
