@@ -4,9 +4,11 @@
 # Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
 
 CXX=g++
+CC=gcc
 LD=g++
 
-CXX_FLAGS=-c -Wall -Iinclude
+WARNINGS=-Wall
+CXX_FLAGS=$(WARNINGS) -c -Iinclude
 LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
@@ -14,7 +16,8 @@ ECHO=echo -e
 
 superttd:
 	@ls .depsok >/dev/null 2>/dev/null || make -s testdeps
-	@make -s clean build
+	@ls .ifnewer >/dev/null 2>/dev/null || make -s ifnewer
+	@make -s build
 	@$(ECHO) "\t --- FINISHED"
 
 testdeps:
@@ -27,12 +30,18 @@ testdeps:
 	@$(ECHO) 'ok' > .depsok
 	@$(ECHO) '\t # .depsok created'
 
+ifnewer:
+	@$(ECHO) '\t --- ifnewer'
+	@$(ECHO) '\t CC src/ifnewer.c'
+	@$(CC) $(WARNINGS) src/ifnewer.c -o .ifnewer
+	@$(ECHO) '\t # .ifnewer compiled'
+
 clean:
 	@-ls *.o >/dev/null 2>/dev/null && $(ECHO) "\t --- clean" && $(ECHO) "\t RM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
 
 build:
 	@$(ECHO) "\t --- build"
-	@for file in $$(ls src/*.cpp);do $(ECHO) "\t CXX "$$file;$(CXX) $(CXX_FLAGS) $$file;done
+	@for file in $$(ls src/*.cpp);do ./.ifnewer $$file $$(echo $$file | awk -F/ '{print $$2".o"}' | awk -F. '{print $$1"."$$3}') 2>/dev/null || ($(ECHO) "\t CXX "$$file && $(CXX) $(CXX_FLAGS) $$file);done
 	@$(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
 
 .PHONY: superttd
