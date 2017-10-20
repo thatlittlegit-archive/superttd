@@ -30,6 +30,6 @@ sprites:
   id: 'moon_flat'
 
 - filename: 'Mars_flat_v.1.png'
-  world: 2 # Mars
-  worldid: 'Mars'
+  worldid: 2 # Mars
+  world: 'Mars'
   id: 'mars_flat'
