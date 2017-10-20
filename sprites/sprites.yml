@@ -1,13 +1,50 @@
 sprites:
-- filename: 'Earth_surface_v.0.png'
+- path:
+  - 'Earth'
+  - 'Surface'
+            -
+filename: 'Earth_test_v.0.png'
   world: 0 # Earth
-  id: 'earth_ground'
-- filename: 'Moon_boulder_v.1.png'
+  id: 'earth_test'
+    - path:
+      - 'Earth'
+      - 'Surface'
+                -
+ filename: 'Earth_boulder_v.1.png'
+  world: 0 # Earth
+  id: 'earth_boulder'
+  - path:
+    - 'Earth'
+    - 'Surface'
+              -
+  filename: 'Earth_flat_v.1.png'
+  world: 0 # Earth
+  id: 'earth_flat'
+  - path:
+    - 'Moon'
+    - 'Surface'
+              -
+ filename: 'Moon_boulder_v.1.png'
   world: 1 # Moon
   id: 'moon_boulder'
-- filename: 'Moon_crater_v.1.png'
+  - path:
+    - 'Moon'
+    - 'Surface'
+              -
+ filename: 'Moon_crater_v.1.png'
   world: 1 # Moon
   id: 'moon_crater'
-- filename: 'Moon_surface_v.1.png'
+  - path:
+    - 'Moon'
+    - 'Surface'
+              -
+ filename: 'Moon_flat_v.1.png'
   world: 1 # Moon
-  id: 'moon_surface'
+  id: 'moon_flat'
+  - path:
+    - 'Mars'
+    - 'Surface'
+              -
+ filename: 'Mars_flat_v.1.png'
+  world: 2 # Mars
+  id: 'mars_flat'
