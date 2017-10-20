@@ -16,8 +16,10 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <array>
 
 using std::string;
+using std::array;
 
 namespace SuperTTD {
 	class Sprite {
@@ -47,13 +49,15 @@ namespace SuperTTD {
 			}
 		}
 		
-		Sprite(string argFilename, int argWorld, string argId) {
-			construct(argFilename, argWorld, argId);
+		Sprite(string argFullFilename, int argWorld, string argId) {
+			construct(argFullFilename, argWorld, argId);
 		}
 
 		Sprite(YAML::Node yaml) {
-			construct(yaml["filename"].as<string>(),
-				  yaml["world"].as<unsigned int>(),
+			construct(yaml["world"].as<string>()
+				  + "/" +
+				  yaml["filename"].as<string>(),
+				  yaml["worldid"].as<unsigned int>(),
 				  yaml["id"].as<string>());
 		}
 		
