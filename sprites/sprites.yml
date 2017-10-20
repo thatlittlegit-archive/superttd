@@ -1,6 +1,7 @@
 sprites:
-- filename: 'Earth/Earth_test_v.0.png'
-  world: 0 # Earth
+- filename: 'Earth_test_v.0.png'
+  worldid: 0 # Earth
+  world: 'Earth'
   id: 'earth_test'
 
 - filename: 'Earth_boulder_v.1.png'
