@@ -16,10 +16,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <array>
 
 using std::string;
-using std::array;
 
 namespace SuperTTD {
 	class Sprite {
