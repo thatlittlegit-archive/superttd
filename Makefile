@@ -41,7 +41,7 @@ clean:
 
 build:
 	@$(ECHO) "\t --- build"
-	@for file in $$(ls src/*.cpp);do ./.ifnewer $$file $$(echo $$file | awk -F/ '{print $$2".o"}' | awk -F. '{print $$1"."$$3}') 2>/dev/null || ($(ECHO) "\t CXX "$$file && $(CXX) $(CXX_FLAGS) $$file);done
+	@for file in $$(ls src/*.cpp);do ./.ifnewer $$file $$(echo $$file | awk -F/ '{print $$2".o"}' | awk -F. '{print $$1"."$$3}') 2>/dev/null || ($(ECHO) "\t CXX "$$file && $(CXX) $(CXX_FLAGS) $$file) || exit 1;done
 	@$(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
 
 .PHONY: superttd
