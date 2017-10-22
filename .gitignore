@@ -5,3 +5,4 @@
 superttd
 .depsok
 .ifnewer
+.buildtmp

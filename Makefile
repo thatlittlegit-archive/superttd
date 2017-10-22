@@ -48,6 +48,6 @@ build:
 	@for file in $$(ls src/*.cpp);do ./.ifnewer $$file $$(echo $$file | awk -F/ '{print $$2".o"}' | awk -F. '{print $$1"."$$3}') 2>/dev/null || ($(ECHO) "\t CXX "$$file && $(CXX) $(CXX_FLAGS) $$file) || exit 1;done
 	@$(ECHO) "\t TOUCH *.o"
 	@$(TOUCH) *.o
-	@$(MD5) *.o | $(DIFF) .buildtmp - >/dev/null || $(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS)
+	@$(MD5) *.o | $(DIFF) .buildtmp - >/dev/null || $(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS);$(ECHO) "\t RM .buildtmp";rm .buildtmp
 
 .PHONY: superttd
