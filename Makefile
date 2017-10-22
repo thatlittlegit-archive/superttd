@@ -40,7 +40,7 @@ ifnewer:
 	@$(ECHO) '\t # .ifnewer compiled'
 
 clean:
-	@-ls *.o >/dev/null 2>/dev/null && $(ECHO) "\t --- clean" && $(ECHO) "\t RM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
+	@-$(ECHO) "\t --- clean" && $(ECHO) "\t RM "$$(ls *.o 2>/dev/null);$(RM) *.o 2>/dev/null
 
 build:
 	@$(ECHO) "\t --- build"
