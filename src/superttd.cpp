@@ -23,6 +23,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
 	
 	vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
+	SuperTTD::Sprite::loadedSprites = &sprites;
 	while (window.isOpen())
 		{
 			sf::Event event;

@@ -37,6 +37,7 @@ namespace SuperTTD {
 		string id;
 		sf::Sprite associated;
 		sf::Texture associatedTexture;
+		static std::vector<Sprite> loadedSprites;
 
 		sf::Sprite reloadSprite() {
 			if(!associatedTexture.loadFromFile("sprites/" + filename)) {
@@ -65,6 +66,8 @@ namespace SuperTTD {
 		}
 	};
 }
+
+std::vector<SuperTTD::Sprite> SuperTTD::Sprite::loadedSprites;
 
 std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder) {
 	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];

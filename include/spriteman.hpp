@@ -28,6 +28,7 @@ namespace SuperTTD {
 		string id;
 		sf::Sprite associated;
 		sf::Texture associatedTexture;
+		static std::vector<Sprite> * loadedSprites;
 		
 		sf::Sprite reloadSprite();
 
