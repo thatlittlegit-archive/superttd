@@ -6,9 +6,9 @@
 1. Install the appropiate libraries.
 #### Linux
 ```shell
-sudo apt install libsfml-dev libyaml-cpp-dev boost # Debian/Ubuntu
-sudo pacman -S sfml yaml-cpp boost                 # Arch Linux
-sudo dnf install SFML yaml-cpp boost               # Fedora (might not work)
+sudo apt install libsfml-dev libyaml-cpp-dev libboost-all-dev # Debian/Ubuntu
+sudo pacman -S sfml yaml-cpp boost                            # Arch Linux
+sudo dnf install SFML yaml-cpp boost                          # Fedora (might not work)
 ```
 #### macOS
 ```shell
