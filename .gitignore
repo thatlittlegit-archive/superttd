@@ -6,3 +6,5 @@ superttd
 .depsok
 .ifnewer
 .buildtmp
+testdeps.cpp
+testdeps.err
