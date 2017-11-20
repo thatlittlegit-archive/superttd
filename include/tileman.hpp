@@ -30,7 +30,7 @@ using std::vector;
 namespace SuperTTD {
 	class Tile {
 	private:
-		void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY);
+		void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int spriteIndex);
 	public:
 		int id;
 		WORLD_SIZE_VARTYPE x;
@@ -38,7 +38,7 @@ namespace SuperTTD {
 		unsigned int spriteIndex;
 		static vector<Tile> tiles;
 
-		Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY);
-		Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY);
+		Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
+		Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
 	};
 }

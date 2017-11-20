@@ -19,18 +19,19 @@
 using std::vector;
 
 namespace SuperTTD {
-	void Tile::construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
+	void Tile::construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex) {
 		id = argId;
 		x = argX;
 		y = argY;
+		spriteIndex = argSpriteIndex;
 	}
 
-	Tile::Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-		construct(argId, argX, argY);
+	Tile::Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex) {
+		construct(argId, argX, argY, argSpriteIndex);
 	}
 
-	Tile::Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-		construct(argSprite.world, argX, argY);
+	Tile::Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex) {
+		construct(argSprite.world, argX, argY, argSpriteIndex);
 	}
 }
 std::vector<SuperTTD::Tile> SuperTTD::Tile::tiles;

@@ -29,7 +29,7 @@ int main()
 	// TEMP Create a 255x255 map for development
 	for(unsigned char x = 0; x < 255; x++) {
 		for(unsigned char y = 0; y < 255; y++) {
-			SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y));
+			SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y, 0));
 		}
 	}
 	while (window.isOpen())
