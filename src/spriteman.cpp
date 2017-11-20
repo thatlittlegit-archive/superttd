@@ -29,6 +29,7 @@ namespace SuperTTD {
 
 			try {
 				associated = reloadSprite();
+				associated.setScale(0.125, 0.125);
 			} catch (const std::invalid_argument& e) {}
 		}
 	public:

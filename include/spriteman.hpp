@@ -11,6 +11,7 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <yaml-cpp/yaml.h>
 #include <string>

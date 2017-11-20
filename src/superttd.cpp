@@ -13,6 +13,7 @@
  */
 #include <SFML/Graphics.hpp>
 #include "spriteman.hpp"
+#include "tileman.hpp"
 #include <vector>
 #include <iostream>
 
@@ -24,6 +25,13 @@ int main()
 	
 	vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
 	SuperTTD::Sprite::loadedSprites = &sprites;
+
+	// TEMP Create a 255x255 map for development
+	for(unsigned char x = 0; x < 255; x++) {
+		for(unsigned char y = 0; y < 255; y++) {
+			SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y));
+		}
+	}
 	while (window.isOpen())
 		{
 			sf::Event event;
@@ -35,9 +43,11 @@ int main()
 			window.clear(sf::Color::Black);
 			
 			// draw everything here...
-			window.draw(sprites.at(1).associated);
-			// window.draw(...);
-			
+			for(unsigned int index = 0; index < SuperTTD::Tile::tiles.size(); index++) {
+				SuperTTD::Tile tile = SuperTTD::Tile::tiles.at(index);
+				sprites.at(tile.spriteIndex).associated.setPosition(sf::Vector2f(tile.x * 8, tile.y * 8));
+				window.draw(sprites.at(tile.spriteIndex).associated);
+			}
 			// end the current frame
 			window.display();
 		}

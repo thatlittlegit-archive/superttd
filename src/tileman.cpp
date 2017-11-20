@@ -14,40 +14,23 @@
 #include <vector>
 #include <algorithm>
 #include <spriteman.hpp>
+#include <tileman.hpp>
 
-/*
- * I used shorts because we really don't need more than
- * 65536*65536 worlds. If we need to make this bigger,
- * go incrementally (int, long, long long...) but don't
- * unless we must.
- * ~thatlittlegit
- */
-#define WORLD_SIZE_VARTYPE short
-
-using std::string;
 using std::vector;
 
 namespace SuperTTD {
-	class Tile {
-	private:
-		void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-			id = argId;
-			x = argX;
-			y = argY;
-		}
-	public:
-		int id;
-		WORLD_SIZE_VARTYPE x;
-		WORLD_SIZE_VARTYPE y;
-	        unsigned int spriteIndex;
-		static vector<Tile> tiles;
-		
-		Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-			construct(argId, argX, argY);
-		}
+	void Tile::construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
+		id = argId;
+		x = argX;
+		y = argY;
+	}
 
-		Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-			construct(argSprite.world, argX, argY);
-		}
-	};
+	Tile::Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
+		construct(argId, argX, argY);
+	}
+
+	Tile::Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
+		construct(argSprite.world, argX, argY);
+	}
 }
+std::vector<SuperTTD::Tile> SuperTTD::Tile::tiles;
