@@ -11,6 +11,7 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
+#include <spriteman.hpp>
 #include <yaml-cpp/yaml.h>
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -20,55 +21,44 @@
 using std::string;
 
 namespace SuperTTD {
-	class Sprite {
-	private:
-		void construct(string argFilename, unsigned int argWorld, string argId) {
-			filename = argFilename;
-			world = argWorld;
-			id = argId;
+	void Sprite::construct(string argFilename, unsigned int argWorld, string argId) {
+		filename = argFilename;
+		world = argWorld;
+		id = argId;
 
-			try {
-				associated = reloadSprite();
-				associated.setScale(0.125, 0.125);
-			} catch (const std::invalid_argument& e) {}
-		}
-	public:
-		string filename;
-		unsigned int world;
-		string id;
-		sf::Sprite associated;
-		sf::Texture associatedTexture;
-		static std::vector<Sprite> loadedSprites;
-
-		sf::Sprite reloadSprite() {
-			if(!associatedTexture.loadFromFile("sprites/" + filename)) {
-				throw std::invalid_argument("Unable to load sprite");
-			} else {
-				associated.setTexture(associatedTexture);
-				return associated;
-			}
-		}
-		
-		Sprite(string argFullFilename, int argWorld, string argId) {
-			construct(argFullFilename, argWorld, argId);
-		}
-
-		Sprite(YAML::Node yaml) {
-			construct(yaml["world"].as<string>()
-				  + "/" +
-				  yaml["filename"].as<string>(),
-				  yaml["worldid"].as<unsigned int>(),
-				  yaml["id"].as<string>());
-		}
-		
-		Sprite(const Sprite &spriteobj) : associated(spriteobj.associated),
-						  associatedTexture(spriteobj.associatedTexture) {
+		try {
+			associated = reloadSprite();
+			associated.setScale(0.125, 0.125);
+		} catch (const std::invalid_argument& e) {}
+	}
+	sf::Sprite Sprite::reloadSprite() {
+		if(!associatedTexture.loadFromFile("sprites/" + filename)) {
+			throw std::invalid_argument("Unable to load sprite");
+		} else {
 			associated.setTexture(associatedTexture);
+			return associated;
 		}
-	};
+	}
+		
+	Sprite::Sprite(string argFullFilename, int argWorld, string argId) {
+		construct(argFullFilename, argWorld, argId);
+	}
+
+	Sprite::Sprite(YAML::Node yaml) {
+		construct(yaml["world"].as<string>()
+			  + "/" +
+			  yaml["filename"].as<string>(),
+			  yaml["worldid"].as<unsigned int>(),
+			  yaml["id"].as<string>());
+	}
+		
+	Sprite::Sprite(const Sprite &spriteobj) : associated(spriteobj.associated),
+						  associatedTexture(spriteobj.associatedTexture) {
+		associated.setTexture(associatedTexture);
+	}
 }
 
-std::vector<SuperTTD::Sprite> SuperTTD::Sprite::loadedSprites;
+std::vector<SuperTTD::Sprite> * SuperTTD::Sprite::loadedSprites;
 
 std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder) {
 	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
