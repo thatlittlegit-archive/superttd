@@ -8,11 +8,11 @@
 -->
 ### I have a...  
 <!-- Select the checkmark which works best by putting an asterisk (*) inside. -->
-[ ] :bug: Bug
-[ ] :bulb: Suggestion
-[ ] :question: Question
-[ ] :boom: Error
-[ ] :fire: Build Error
+- [ ] :bug: Bug
+- [ ] :bulb: Suggestion
+- [ ] :question: Question
+- [ ] :boom: Error
+- [ ] :fire: Build Error
 
 <!-- Put your problem in the area below. Make sure you give a lot of details. -->
 [ insert problem here ]
@@ -52,7 +52,7 @@
 ```
 [paste here]
 ```
-* Does it work after a `make clean`? [ ]
+- [ ] Does it work after a `make clean`?
 Remove this line too -->
 
 <!-- You're all done! -->
