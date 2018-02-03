@@ -20,53 +20,60 @@
 
 using std::string;
 
-namespace SuperTTD {
-	void Sprite::construct(string argFilename, unsigned int argWorld, string argId) {
-		filename = argFilename;
-		world = argWorld;
-		id = argId;
+namespace SuperTTD
+{
+void Sprite::construct(string argFilename, unsigned int argWorld, string argId)
+{
+	filename = argFilename;
+	world = argWorld;
+	id = argId;
 
-		try {
-			associated = reloadSprite();
-			associated.setScale(0.125, 0.125);
-		} catch (const std::invalid_argument& e) {}
+	try {
+		associated = reloadSprite();
+		associated.setScale(0.125, 0.125);
+	} catch (const std::invalid_argument &e) {
 	}
-	sf::Sprite Sprite::reloadSprite() {
-		if(!associatedTexture.loadFromFile("sprites/" + filename)) {
-			throw std::invalid_argument("Unable to load sprite");
-		} else {
-			associated.setTexture(associatedTexture);
-			return associated;
-		}
-	}
-		
-	Sprite::Sprite(string argFullFilename, int argWorld, string argId) {
-		construct(argFullFilename, argWorld, argId);
-	}
-
-	Sprite::Sprite(YAML::Node yaml) {
-		construct(yaml["world"].as<string>()
-			  + "/" +
-			  yaml["filename"].as<string>(),
-			  yaml["worldid"].as<unsigned int>(),
-			  yaml["id"].as<string>());
-	}
-		
-	Sprite::Sprite(const Sprite &spriteobj) : associated(spriteobj.associated),
-						  associatedTexture(spriteobj.associatedTexture) {
+}
+sf::Sprite Sprite::reloadSprite()
+{
+	if (!associatedTexture.loadFromFile("sprites/" + filename)) {
+		throw std::invalid_argument("Unable to load sprite");
+	} else {
 		associated.setTexture(associatedTexture);
+		return associated;
 	}
 }
 
-std::vector<SuperTTD::Sprite> * SuperTTD::Sprite::loadedSprites;
+Sprite::Sprite(string argFullFilename, int argWorld, string argId)
+{
+	construct(argFullFilename, argWorld, argId);
+}
 
-std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder) {
-	YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
+Sprite::Sprite(YAML::Node yaml)
+{
+	construct(yaml["world"].as<string>() + "/" + yaml["filename"].as<string>(),
+			  yaml["worldid"].as<unsigned int>(), yaml["id"].as<string>());
+}
+
+Sprite::Sprite(const Sprite &spriteobj)
+	: associated(spriteobj.associated),
+	  associatedTexture(spriteobj.associatedTexture)
+{
+	associated.setTexture(associatedTexture);
+}
+}
+
+std::vector<SuperTTD::Sprite> *SuperTTD::Sprite::loadedSprites;
+
+std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder)
+{
+	YAML::Node sprites =
+			YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
 	std::vector<SuperTTD::Sprite> toReturn;
 
-	for(unsigned int index = 0; index < sprites.size(); index++) {
+	for (unsigned int index = 0; index < sprites.size(); index++) {
 		toReturn.push_back(SuperTTD::Sprite(sprites[index]));
 	}
-	
+
 	return toReturn;
 }

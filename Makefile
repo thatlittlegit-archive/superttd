@@ -17,6 +17,7 @@ ECHO=$(ECHONOE) -e
 TOUCH=touch
 MD5=md5sum
 DIFF=diff
+CLANGFORMAT=clang-format
 
 superttd:
 	@ls .depsok >/dev/null 2>/dev/null || make -s testdeps
@@ -50,5 +51,9 @@ build:
 	@$(ECHO) "\t TOUCH *.o"
 	@$(TOUCH) *.o
 	@$(MD5) *.o | $(DIFF) .buildtmp - >/dev/null || $(ECHO) "\t LD "$$(ls *.o);$(LD) $$(ls *.o) $(LD_FLAGS);$(ECHO) "\t RM .buildtmp";rm .buildtmp
+
+format:
+	@$(ECHO) "\t --- format"
+	@for file in $$(ls src/*.c src/*.cpp); do echo "CLANGFORMAT $$file" && $(CLANGFORMAT) $$file >/tmp/superttd; mv /tmp/superttd $$file; done
 
 .PHONY: superttd
