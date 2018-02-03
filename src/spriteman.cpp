@@ -30,7 +30,8 @@ void Sprite::construct(string argFilename, unsigned int argWorld, string argId)
 
 	try {
 		associated = reloadSprite();
-		associated.setScale(0.125, 0.125);
+		associated.setScale(0.125 * 0.65, 0.125 * 0.65);
+		associated.setRotation(135);
 	} catch (const std::invalid_argument &e) {
 	}
 }

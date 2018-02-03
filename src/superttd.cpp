@@ -47,7 +47,7 @@ int main()
 			SuperTTD::Tile tile = SuperTTD::Tile::tiles.at(index);
 			sprites.at(tile.spriteIndex)
 					.associated.setPosition(
-							sf::Vector2f(tile.x * 8, tile.y * 8));
+							sf::Vector2f(tile.x * 64, tile.y * 64));
 			window.draw(sprites.at(tile.spriteIndex).associated);
 		}
 		// end the current frame
