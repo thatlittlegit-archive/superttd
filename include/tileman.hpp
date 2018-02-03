@@ -27,18 +27,24 @@
 
 using std::vector;
 
-namespace SuperTTD {
-	class Tile {
-	private:
-		void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int spriteIndex);
-	public:
-		int id;
-		WORLD_SIZE_VARTYPE x;
-		WORLD_SIZE_VARTYPE y;
-		unsigned int spriteIndex;
-		static vector<Tile> tiles;
+namespace SuperTTD
+{
+class Tile
+{
+  private:
+	void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
+				   unsigned int spriteIndex);
 
-		Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
-		Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
-	};
+  public:
+	int id;
+	WORLD_SIZE_VARTYPE x;
+	WORLD_SIZE_VARTYPE y;
+	unsigned int spriteIndex;
+	static vector<Tile> tiles;
+
+	Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
+		 unsigned int argSpriteIndex);
+	Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX,
+		 WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
+};
 }

@@ -54,6 +54,6 @@ build:
 
 format:
 	@$(ECHO) "\t --- format"
-	@for file in $$(ls src/*.c src/*.cpp); do echo "CLANGFORMAT $$file" && $(CLANGFORMAT) $$file >/tmp/superttd; mv /tmp/superttd $$file; done
+	@for file in $$(ls src/*.c src/*.cpp include/*.hpp); do echo "CLANGFORMAT $$file" && $(CLANGFORMAT) $$file >/tmp/superttd; mv /tmp/superttd $$file; done
 
 .PHONY: superttd

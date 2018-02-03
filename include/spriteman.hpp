@@ -19,25 +19,28 @@
 
 using std::string;
 
-namespace SuperTTD {
-	class Sprite {
-	private:
-		void construct(string argFilename, unsigned int argWorld, string argId);
-	public:
-		string filename;
-		int world;
-		string id;
-		sf::Sprite associated;
-		sf::Texture associatedTexture;
-		static std::vector<Sprite> * loadedSprites;
-		
-		sf::Sprite reloadSprite();
+namespace SuperTTD
+{
+class Sprite
+{
+  private:
+	void construct(string argFilename, unsigned int argWorld, string argId);
 
-		Sprite(string argFilename, int argWorld, string argId);
-		Sprite(YAML::Node yaml);
+  public:
+	string filename;
+	int world;
+	string id;
+	sf::Sprite associated;
+	sf::Texture associatedTexture;
+	static std::vector<Sprite> *loadedSprites;
 
-		Sprite(const Sprite &spriteobj);
-	};
+	sf::Sprite reloadSprite();
+
+	Sprite(string argFilename, int argWorld, string argId);
+	Sprite(YAML::Node yaml);
+
+	Sprite(const Sprite &spriteobj);
+};
 }
 
 std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder);
