@@ -15,12 +15,8 @@ sudo dnf install SFML yaml-cpp boost                          # Fedora (might no
 brew install sfml yaml-cpp boost                   # Might work
 ```
 #### Windows
-```cmd
-REM See https://www.sfml-dev.org/tutorials/2.4/start-vc.php
-REM or https://www.sfml-dev.org/tutorials/2.4/start-cb.php
-
-REM Then, build https://github.com/jbeder/yaml-cpp.
-```
+See https://www.sfml-dev.org/tutorials/2.4/start-vc.php or https://www.sfml-dev.org/tutorials/2.4/start-cb.php.
+Then, build https://github.com/jbeder/yaml-cpp and use Git Bash or WSL to run `make`.
 2. Run `make`. It should compile an executable. The `testdeps`
 should only run the first time.
 3. Run the executable.
