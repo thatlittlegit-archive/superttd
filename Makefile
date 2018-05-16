@@ -13,7 +13,7 @@ LD_FLAGS=-o superttd -lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
 ECHONOE=echo
-ECHO=$(ECHONOE) -e
+ECHO=$(ECHONOE) $(shell exec /bin/sh -c 'echo -e x >.test && grep -e "-e" <.test >.testa || echo "-e"; rm .test .testa')
 TOUCH=touch
 MD5=md5sum
 DIFF=diff
