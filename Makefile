@@ -29,10 +29,10 @@ testdeps:
 clean:
 	-rm src/*.o testdeps.* a.out superttd
 
-format:
-	for file in $$(ls src/*.c src/*.cpp include/*.hpp); \
-		do clang-format $$file >/tmp/superttd;      \
-		mv /tmp/superttd $$file;                    \
-	done
+%.formatted: %.cpp
+	clang-format $^ >/tmp/superttd
+	mv /tmp/superttd $^
 
-.PHONY: testdeps clean format
+format: $(patsubst %.cpp,%.formatted,$(wildcard src/*.cpp))
+
+.PHONY: testdeps clean format %.formatted
