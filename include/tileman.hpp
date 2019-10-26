@@ -12,9 +12,9 @@
  * If not, see https://gnu.org/licenses/.
  */
 #pragma once
-#include <vector>
-#include <algorithm>
 #include "spriteman.hpp"
+#include <algorithm>
+#include <vector>
 
 /*
  * I used shorts because we really don't need more than
@@ -27,24 +27,22 @@
 
 using std::vector;
 
-namespace SuperTTD
-{
-class Tile
-{
-  private:
-	void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
-				   unsigned int spriteIndex);
+namespace SuperTTD {
+class Tile {
+private:
+    void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
+        unsigned int spriteIndex);
 
-  public:
-	int id;
-	WORLD_SIZE_VARTYPE x;
-	WORLD_SIZE_VARTYPE y;
-	unsigned int spriteIndex;
-	static vector<Tile> tiles;
+public:
+    int id;
+    WORLD_SIZE_VARTYPE x;
+    WORLD_SIZE_VARTYPE y;
+    unsigned int spriteIndex;
+    static vector<Tile> tiles;
 
-	Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
-		 unsigned int argSpriteIndex);
-	Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX,
-		 WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
+    Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
+        unsigned int argSpriteIndex);
+    Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX,
+        WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
 };
 }

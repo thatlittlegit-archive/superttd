@@ -60,49 +60,7 @@ example is: `Make the code compile by adding a semicolon (#32)`.
 
 ## Styleguide
 ### C++ Code
-```cpp
-/* (c) 2017 thatlittlegit, PinguPenguin and contributors.
- * This file is from the SuperTTD project.
- *
- * --- legal stuff, see spriteman.cpp for an example ---
- */
-#include <string>
-//      ^ spaces in preprocessor directives
-
-// If you use something (like a string) more than twice, use the
-// `using` keyword
-using std::string;
-
-// using namespace std;
-//        ^ don't use `using namespace`
-
-// Put classes (not global functions!) in namespaces.
-namespace SuperTTD {
-	void Sprite::construct(string argFilename, unsigned int argWorld, string argId) {
-//	                                          ^ spaces between arguments
-		filename = argFilename;
-		        ^ ^ spaces in assignment
-
-		try {
-			associated = reloadSprite();
-		} catch (const std::invalid_argument& e) {}
-		//     ^ space in catch
-	}
-}
-
-//          \/ camelCase
-void functionName() {
-//              \/ space before brackets
-	if (true) {
-	//^ space after if
-		return false;	
-// ^ tab indentation
-	} else {
-//       ^    ^ padding on the elses
-	}
-}
-```
-There's probably more to be added. Make a PR!
+Use the [WebKit style guide](https://webkit.org/code-style-guidelines/).
 
 ### Git Commit Messages
 * Present tense. *Add <feature>*, not *Added <feature>*

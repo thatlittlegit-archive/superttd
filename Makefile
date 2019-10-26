@@ -33,6 +33,6 @@ clean:
 	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)
 
 format: $(wildcard src/*.cpp) $(wildcard include/*.hpp)
-	clang-format -i $^
+	clang-format -style=WebKit -i $^
 
 .PHONY: clean format

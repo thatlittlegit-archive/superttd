@@ -11,46 +11,46 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
-#include <SFML/Graphics.hpp>
 #include "spriteman.hpp"
 #include "tileman.hpp"
-#include <vector>
+#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 using std::vector;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
 
-	vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
-	SuperTTD::Sprite::loadedSprites = &sprites;
+    vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
+    SuperTTD::Sprite::loadedSprites = &sprites;
 
-	// TEMP Create a 255x255 map for development
-	for (unsigned char x = 0; x < 255; x++) {
-		for (unsigned char y = 0; y < 255; y++) {
-			SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y, 0));
-		}
-	}
-	while (window.isOpen()) {
-		sf::Event event;
+    // TEMP Create a 255x255 map for development
+    for (unsigned char x = 0; x < 255; x++) {
+        for (unsigned char y = 0; y < 255; y++) {
+            SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y, 0));
+        }
+    }
+    while (window.isOpen()) {
+        sf::Event event;
 
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear(sf::Color::Black);
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        window.clear(sf::Color::Black);
 
-		// draw everything here...
-		for (unsigned int index = 0; index < SuperTTD::Tile::tiles.size();
-			 index++) {
-			SuperTTD::Tile tile = SuperTTD::Tile::tiles.at(index);
-			sprites.at(tile.spriteIndex)
-					.associated.setPosition(
-							sf::Vector2f(tile.x * 64, tile.y * 64));
-			window.draw(sprites.at(tile.spriteIndex).associated);
-		}
-		// end the current frame
-		window.display();
-	}
+        // draw everything here...
+        for (unsigned int index = 0; index < SuperTTD::Tile::tiles.size();
+             index++) {
+            SuperTTD::Tile tile = SuperTTD::Tile::tiles.at(index);
+            sprites.at(tile.spriteIndex)
+                .associated.setPosition(
+                    sf::Vector2f(tile.x * 64, tile.y * 64));
+            window.draw(sprites.at(tile.spriteIndex).associated);
+        }
+        // end the current frame
+        window.display();
+    }
 }
