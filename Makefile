@@ -4,18 +4,27 @@
 # Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
 WARNINGS=-Wall
 
-CXX=g++
+CC=$(CXX)
 LD=g++
 
 CXXFLAGS=$(WARNINGS) -c -Iinclude
-LDFLAGS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
+LDLIBS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
 
-all: superttd
-superttd: $(patsubst %.cpp,%.o,$(wildcard src/*.cpp))
-	$(LD) $(LDFLAGS) -o $@ $^
+TARGETS= \
+	src/spriteman.o \
+	src/superttd.o \
+	src/tileman.o \
 
+all: superttd
+superttd: src/superttd
+	mv $^ $@
+src/superttd: $(TARGETS)
+
+src/spriteman.o: src/spriteman.cpp include/spriteman.hpp
+src/superttd.o: src/superttd.cpp include/superttd.hpp include/tileman.hpp include/spriteman.hpp
+src/tileman.o: src/tileman.cpp include/tileman.hpp include/spriteman.hpp
 
 clean:
 	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)
