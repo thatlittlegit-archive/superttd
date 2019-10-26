@@ -12,22 +12,13 @@ LDFLAGS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
 
-all:
-	[ -f '.depsok' ] || make testdeps
-	make superttd
-
+all: superttd
 superttd: $(patsubst %.cpp,%.o,$(wildcard src/*.cpp))
 	$(LD) $(LDFLAGS) -o $@ $^
 
-testdeps:
-	-rm testdeps.* a.out .depsok 2>/dev/null
-	echo '#include <SFML/Graphics.hpp>\n#include <yaml-cpp/yaml.h>\nint main() {}' > testdeps.cpp
-	$(CXX) testdeps.cpp 2>testdeps.err
-	-rm testdeps.* a.out 2>/dev/null
-	echo 'ok' > .depsok
 
 clean:
-	-rm src/*.o testdeps.* a.out superttd
+	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)
 
 %.formatted: %.cpp
 	clang-format $^ >/tmp/superttd
@@ -35,4 +26,4 @@ clean:
 
 format: $(patsubst %.cpp,%.formatted,$(wildcard src/*.cpp))
 
-.PHONY: testdeps clean format %.formatted
+.PHONY: clean format %.formatted

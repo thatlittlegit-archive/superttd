@@ -46,13 +46,9 @@
 * Make [version]
 
 <!-- Remove this line and fill out the following if it's a build error.
-### Build Details
-* Pastebin of testdeps.err: [link] (if the file doesn't exist, don't worry)
-* Make log:
+### Build Log
 ```
 [paste here]
 ```
-- [ ] Does it work after a `make clean`?
-Remove this line too -->
 
 <!-- You're all done! -->
