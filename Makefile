@@ -1,5 +1,8 @@
 #
-# Makefile: Makefile for GNU Make.
+# Makefile: Builds the SuperTTD project. Use with GNU Make.
+#
+# (c) 2019 thatlittlegit. This code is licensed under the *Unlicense*. See
+# https://unlicense.org.
 #
 # Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
 WARNINGS=-Wall

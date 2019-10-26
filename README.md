@@ -25,4 +25,4 @@ should only run the first time.
 
 The code of SuperTTD is under the GPL 2.0 License. The graphics
 are under the Creative Commons Attribution-NoCommercial-ShareAlike
-4.0 International License. **See the license file for more info.**
+4.0 International License. **See the COPYING file for more info.**
