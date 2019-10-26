@@ -1,4 +1,4 @@
-/* (c) 2017 thatlittlegit and PinguPenguin.
+/* (c) 2017-2018 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
