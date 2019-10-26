@@ -29,10 +29,7 @@ src/tileman.o: src/tileman.cpp include/tileman.hpp include/spriteman.hpp
 clean:
 	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)
 
-%.formatted: %.cpp
-	clang-format $^ >/tmp/superttd
-	mv /tmp/superttd $^
+format: $(wildcard src/*.cpp) $(wildcard include/*.hpp)
+	clang-format -i $^
 
-format: $(patsubst %.cpp,%.formatted,$(wildcard src/*.cpp))
-
-.PHONY: clean format %.formatted
+.PHONY: clean format
