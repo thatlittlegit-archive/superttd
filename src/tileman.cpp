@@ -11,10 +11,8 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
-#include <algorithm>
-#include "spriteman.hpp"
 #include "tileman.hpp"
-#include <vector>
+#include <algorithm>
 
 using std::vector;
 

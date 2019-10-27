@@ -1,4 +1,4 @@
-/* (c) 2017-2018 thatlittlegit and PinguPenguin.
+/* (c) 2017-2019 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
@@ -13,32 +13,29 @@
  */
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <string>
 #include <vector>
 #include <yaml-cpp/yaml.h>
-
-using std::string;
 
 namespace SuperTTD {
 class Sprite {
 private:
-    void construct(string argFilename, unsigned int argWorld, string argId);
+    void construct(std::string argFilename, unsigned int argWorld, std::string argId);
 
 public:
-    string filename;
+    std::string filename;
     int world;
-    string id;
+    std::string id;
     sf::Sprite associated;
     sf::Texture associatedTexture;
     static std::vector<Sprite>* loadedSprites;
 
     sf::Sprite reloadSprite();
 
-    Sprite(string argFilename, int argWorld, string argId);
+    Sprite(std::string argFilename, int argWorld, std::string argId);
     Sprite(YAML::Node yaml);
 
     Sprite(const Sprite& spriteobj);
 };
 }
 
-std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder);
+std::vector<SuperTTD::Sprite> fetchSprites(std::string spriteFolder);

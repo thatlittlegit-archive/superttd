@@ -1,4 +1,4 @@
-/* (c) 2017-2018 thatlittlegit and PinguPenguin.
+/* (c) 2017-2019 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
@@ -13,7 +13,6 @@
  */
 #pragma once
 #include "spriteman.hpp"
-#include <algorithm>
 #include <vector>
 
 /*
@@ -24,8 +23,6 @@
  * ~thatlittlegit
  */
 #define WORLD_SIZE_VARTYPE short
-
-using std::vector;
 
 namespace SuperTTD {
 class Tile {
@@ -38,7 +35,7 @@ public:
     WORLD_SIZE_VARTYPE x;
     WORLD_SIZE_VARTYPE y;
     unsigned int spriteIndex;
-    static vector<Tile> tiles;
+    static std::vector<Tile> tiles;
 
     Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
         unsigned int argSpriteIndex);

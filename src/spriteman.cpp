@@ -11,12 +11,8 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
-#include <SFML/Graphics.hpp>
-#include <iostream>
 #include "spriteman.hpp"
 #include <string>
-#include <vector>
-#include <yaml-cpp/yaml.h>
 
 using std::string;
 
