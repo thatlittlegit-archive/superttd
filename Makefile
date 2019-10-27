@@ -17,7 +17,7 @@ RM=rm
 CLANGFORMAT=clang-format
 
 TARGETS= \
-	src/spriteman.o \
+	src/sprite.o \
 	src/superttd.o \
 	src/tileman.o \
 
@@ -26,8 +26,8 @@ superttd: src/superttd
 	mv $^ $@
 src/superttd: $(TARGETS)
 
-src/spriteman.o: src/spriteman.cpp src/spriteman.hpp
-src/superttd.o: src/superttd.cpp src/superttd.hpp src/tileman.hpp src/spriteman.hpp
+src/sprite.o: src/sprite.cpp src/sprite.hpp
+src/superttd.o: src/superttd.cpp src/superttd.hpp src/tileman.hpp src/sprite.hpp
 src/tileman.o: src/tileman.cpp src/tileman.hpp
 
 clean:

@@ -11,7 +11,7 @@
  * You should have recieved a copy of the GPL with this project.
  * If not, see https://gnu.org/licenses/.
  */
-#include "spriteman.hpp"
+#include "sprite.hpp"
 #include <algorithm>
 #include <iterator>
 
