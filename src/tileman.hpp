@@ -15,16 +15,21 @@
 #include "spriteman.hpp"
 #include <vector>
 
+namespace SuperTTD {
 /*
  * I used shorts because we really don't need more than
  * 65536*65536 worlds. If we need to make this bigger,
  * go incrementally (int, long, long long...) but don't
  * unless we must.
+ *
+ *                2     32
+ * Remember: 65536   = 2   = 4 GIGABYTES
+ *                      16
+ *           65536   = 2   = 65 kilobytes <-- much smaller!
  * ~thatlittlegit
  */
-#define WORLD_SIZE_VARTYPE short
+typedef uint16_t WORLD_SIZE_VARTYPE;
 
-namespace SuperTTD {
 class Tile {
 private:
     void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
