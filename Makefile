@@ -28,7 +28,7 @@ src/superttd: $(TARGETS)
 
 src/spriteman.o: src/spriteman.cpp src/spriteman.hpp
 src/superttd.o: src/superttd.cpp src/superttd.hpp src/tileman.hpp src/spriteman.hpp
-src/tileman.o: src/tileman.cpp src/tileman.hpp src/spriteman.hpp
+src/tileman.o: src/tileman.cpp src/tileman.hpp
 
 clean:
 	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)

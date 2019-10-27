@@ -12,7 +12,7 @@
  * If not, see https://gnu.org/licenses/.
  */
 #pragma once
-#include "spriteman.hpp"
+#include <string>
 #include <vector>
 
 namespace SuperTTD {
@@ -31,20 +31,12 @@ namespace SuperTTD {
 typedef uint16_t WORLD_SIZE_VARTYPE;
 
 class Tile {
-private:
-    void construct(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
-        unsigned int spriteIndex);
-
 public:
-    int id;
+    std::string spriteId;
     WORLD_SIZE_VARTYPE x;
     WORLD_SIZE_VARTYPE y;
-    unsigned int spriteIndex;
     static std::vector<Tile> tiles;
 
-    Tile(int argId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY,
-        unsigned int argSpriteIndex);
-    Tile(SuperTTD::Sprite argSprite, WORLD_SIZE_VARTYPE argX,
-        WORLD_SIZE_VARTYPE argY, unsigned int argSpriteIndex);
+    Tile(std::string spriteId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY);
 };
 }

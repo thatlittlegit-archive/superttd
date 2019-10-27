@@ -1,4 +1,4 @@
-/* (c) 2017-2018 thatlittlegit and PinguPenguin.
+/* (c) 2017-2019 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
@@ -23,13 +23,12 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SuperTTD");
 
-    vector<SuperTTD::Sprite> sprites = fetchSprites("sprites");
-    SuperTTD::Sprite::loadedSprites = &sprites;
+    SuperTTD::Sprite::loadSprites("sprites");
 
     // TEMP Create a 255x255 map for development
     for (unsigned char x = 0; x < 255; x++) {
         for (unsigned char y = 0; y < 255; y++) {
-            SuperTTD::Tile::tiles.push_back(SuperTTD::Tile(0, x, y, 0));
+            SuperTTD::Tile::tiles.push_back(SuperTTD::Tile("TODO:earth:grass", x, y));
         }
     }
     while (window.isOpen()) {
@@ -44,11 +43,7 @@ int main()
         // draw everything here...
         for (unsigned int index = 0; index < SuperTTD::Tile::tiles.size();
              index++) {
-            SuperTTD::Tile tile = SuperTTD::Tile::tiles.at(index);
-            sprites.at(tile.spriteIndex)
-                .associated.setPosition(
-                    sf::Vector2f(tile.x * 64, tile.y * 64));
-            window.draw(sprites.at(tile.spriteIndex).associated);
+            // TODO
         }
         // end the current frame
         window.display();

@@ -13,29 +13,37 @@
  */
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <string>
 #include <vector>
 #include <yaml-cpp/yaml.h>
 
 namespace SuperTTD {
-class Sprite {
-private:
-    void construct(std::string argFilename, unsigned int argWorld, std::string argId);
+struct Pixel {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+};
+constexpr short TEXTURE_SIZE = 512;
+typedef std::array<std::array<Pixel, TEXTURE_SIZE>, TEXTURE_SIZE> Texture;
 
+class Sprite {
 public:
     std::string filename;
     int world;
     std::string id;
-    sf::Sprite associated;
-    sf::Texture associatedTexture;
-    static std::vector<Sprite>* loadedSprites;
 
-    sf::Sprite reloadSprite();
+    sf::Texture getSfmlTexture();
+    Texture& getPixelData();
+    void setPixelData(const Texture&);
 
-    Sprite(std::string argFilename, int argWorld, std::string argId);
-    Sprite(YAML::Node yaml);
+    Sprite(std::string argFilename, unsigned int argWorld, std::string argId);
 
-    Sprite(const Sprite& spriteobj);
+    static void loadSprites(std::string spriteFolder);
+
+private:
+    static std::vector<Sprite> loadedSprites;
+    Texture texture;
+
+    static Sprite fromYaml(YAML::Node yaml);
 };
 }
-
-std::vector<SuperTTD::Sprite> fetchSprites(std::string spriteFolder);

@@ -12,63 +12,53 @@
  * If not, see https://gnu.org/licenses/.
  */
 #include "spriteman.hpp"
-#include <string>
+#include <algorithm>
+#include <iterator>
 
 using std::string;
 
 namespace SuperTTD {
-void Sprite::construct(string argFilename, unsigned int argWorld, string argId)
+Sprite::Sprite(string argFilename, unsigned int argWorld, string argId)
 {
     filename = argFilename;
     world = argWorld;
     id = argId;
-
-    try {
-        associated = reloadSprite();
-        associated.setScale(0.125 * 0.65, 0.125 * 0.65);
-        associated.setRotation(135);
-    } catch (const std::invalid_argument& e) {
-    }
-}
-sf::Sprite Sprite::reloadSprite()
-{
-    if (!associatedTexture.loadFromFile("sprites/" + filename)) {
-        throw std::invalid_argument("Unable to load sprite");
-    } else {
-        associated.setTexture(associatedTexture);
-        return associated;
-    }
 }
 
-Sprite::Sprite(string argFullFilename, int argWorld, string argId)
+Sprite Sprite::fromYaml(YAML::Node yaml)
 {
-    construct(argFullFilename, argWorld, argId);
-}
-
-Sprite::Sprite(YAML::Node yaml)
-{
-    construct(yaml["world"].as<string>() + "/" + yaml["filename"].as<string>(),
+    return Sprite(yaml["world"].as<string>() + "/" + yaml["filename"].as<string>(),
         yaml["worldid"].as<unsigned int>(), yaml["id"].as<string>());
 }
 
-Sprite::Sprite(const Sprite& spriteobj)
-    : associated(spriteobj.associated)
-    , associatedTexture(spriteobj.associatedTexture)
+sf::Texture Sprite::getSfmlTexture()
 {
-    associated.setTexture(associatedTexture);
-}
+    Texture image = getPixelData();
+    sf::Texture texture;
+    if (!texture.loadFromMemory(&image, TEXTURE_SIZE * TEXTURE_SIZE))
+        throw std::runtime_error("failed to load texture");
+
+    return texture;
 }
 
-std::vector<SuperTTD::Sprite>* SuperTTD::Sprite::loadedSprites;
+Texture& Sprite::getPixelData()
+{
+    return texture;
+}
 
-std::vector<SuperTTD::Sprite> fetchSprites(string spriteFolder)
+void Sprite::setPixelData(const Texture& newTexture)
+{
+    std::copy(std::begin(newTexture), std::end(newTexture), std::begin(texture));
+}
+
+std::vector<SuperTTD::Sprite> Sprite::loadedSprites;
+
+void Sprite::loadSprites(string spriteFolder)
 {
     YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
-    std::vector<SuperTTD::Sprite> toReturn;
 
     for (unsigned int index = 0; index < sprites.size(); index++) {
-        toReturn.push_back(SuperTTD::Sprite(sprites[index]));
+        loadedSprites.push_back(Sprite::fromYaml(sprites[index]));
     }
-
-    return toReturn;
+}
 }
