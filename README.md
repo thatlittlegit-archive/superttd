@@ -2,24 +2,18 @@
 [![GPL License](https://img.shields.io/badge/license-GPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)  
 *An expandable version of OpenTTD!*
 
-## Getting Started
-1. Install the appropiate libraries.
-#### Linux
+## Compilation
+Install the appropiate libraries. Probably one of the following commands:
 ```shell
-sudo apt install libsfml-dev libyaml-cpp-dev libboost-all-dev # Debian/Ubuntu
-sudo pacman -S sfml yaml-cpp boost                            # Arch Linux
-sudo dnf install SFML yaml-cpp boost                          # Fedora (might not work)
+sudo apt install libsfml-dev libyaml-cpp-dev # Debian/Ubuntu
+sudo pacman -S sfml yaml-cpp # Arch Linux
+sudo dnf install SFML yaml-cpp # Fedora (might not work)
+brew install sfml yaml-cpp # Might work
 ```
-#### macOS
-```shell
-brew install sfml yaml-cpp boost                   # Might work
-```
-#### Windows
-See https://www.sfml-dev.org/tutorials/2.4/start-vc.php or https://www.sfml-dev.org/tutorials/2.4/start-cb.php.
-Then, build https://github.com/jbeder/yaml-cpp and use Git Bash or WSL to run `make`.
-2. Run `make`. It should compile an executable. The `testdeps`
-should only run the first time.
-3. Run the executable.
+### ...on Windows
+*You will have to install dependencies manually.* See https://www.sfml-dev.org/
+for instructions on installing SFML, and build
+[yaml-cpp](https://github.com/jbeder/yaml-cpp). Use Git Bash or WSL to run `make`.
 
 ## Licenses
 
