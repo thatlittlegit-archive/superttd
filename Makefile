@@ -14,6 +14,7 @@ CXXFLAGS=$(WARNINGS) -c -Iinclude
 LDLIBS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
 
 RM=rm
+CLANGFORMAT=clang-format
 
 TARGETS= \
 	src/spriteman.o \
@@ -33,6 +34,6 @@ clean:
 	$(RM) -f $(wildcard src/*.o) $(wildcard superttd) $(wildcard src/superttd)
 
 format: $(wildcard src/*.cpp) $(wildcard include/*.hpp)
-	clang-format -style=WebKit -i $^
+	$(CLANGFORMAT) -style=WebKit -i $^
 
 .PHONY: clean format
