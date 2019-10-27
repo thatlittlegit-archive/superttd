@@ -1,4 +1,4 @@
-/* (c) 2017-2018 thatlittlegit and PinguPenguin.
+/* (c) 2017-2019 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
@@ -13,7 +13,7 @@
  */
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <spriteman.hpp>
+#include "spriteman.hpp"
 #include <string>
 #include <vector>
 #include <yaml-cpp/yaml.h>

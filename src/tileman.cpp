@@ -1,4 +1,4 @@
-/* (c) 2017-2018 thatlittlegit and PinguPenguin.
+/* (c) 2017-2019 thatlittlegit and PinguPenguin.
  * This file is from the SuperTTD project.
  *
  * SuperTTD, and by extension this file, is free software under
@@ -12,8 +12,8 @@
  * If not, see https://gnu.org/licenses/.
  */
 #include <algorithm>
-#include <spriteman.hpp>
-#include <tileman.hpp>
+#include "spriteman.hpp"
+#include "tileman.hpp"
 #include <vector>
 
 using std::vector;
