@@ -12,6 +12,7 @@
  * If not, see https://gnu.org/licenses/.
  */
 #pragma once
+#include "namespaced_id.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
@@ -30,7 +31,7 @@ class Sprite {
 public:
     std::string filename;
     int world;
-    std::string id;
+    NamespacedIdentifier id;
 
     sf::Texture getSfmlTexture();
     Texture& getPixelData();
@@ -46,4 +47,4 @@ private:
 
     static Sprite fromYaml(YAML::Node yaml);
 };
-}
+} // namespace SuperTTD

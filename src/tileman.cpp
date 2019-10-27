@@ -14,10 +14,11 @@
 #include "tileman.hpp"
 
 namespace SuperTTD {
-Tile::Tile(std::string argSpriteId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY) {
-    spriteId = argSpriteId;
-    x = argX;
-    y = argY;
+Tile::Tile(std::string argSpriteId, WORLD_SIZE_VARTYPE argX, WORLD_SIZE_VARTYPE argY)
+    : spriteId(argSpriteId)
+    , x(argX)
+    , y(argY)
+{
 }
 
 std::vector<SuperTTD::Tile> SuperTTD::Tile::tiles;

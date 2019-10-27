@@ -19,10 +19,10 @@ using std::string;
 
 namespace SuperTTD {
 Sprite::Sprite(string argFilename, unsigned int argWorld, string argId)
+    : filename(argFilename)
+    , world(argWorld)
+    , id(argId)
 {
-    filename = argFilename;
-    world = argWorld;
-    id = argId;
 }
 
 Sprite Sprite::fromYaml(YAML::Node yaml)
@@ -41,10 +41,7 @@ sf::Texture Sprite::getSfmlTexture()
     return texture;
 }
 
-Texture& Sprite::getPixelData()
-{
-    return texture;
-}
+Texture& Sprite::getPixelData() { return texture; }
 
 void Sprite::setPixelData(const Texture& newTexture)
 {
@@ -61,4 +58,4 @@ void Sprite::loadSprites(string spriteFolder)
         loadedSprites.push_back(Sprite::fromYaml(sprites[index]));
     }
 }
-}
+} // namespace SuperTTD

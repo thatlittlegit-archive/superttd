@@ -12,6 +12,7 @@
  * If not, see https://gnu.org/licenses/.
  */
 #pragma once
+#include "namespaced_id.hpp"
 #include <string>
 #include <vector>
 
@@ -32,7 +33,7 @@ typedef uint16_t WORLD_SIZE_VARTYPE;
 
 class Tile {
 public:
-    std::string spriteId;
+    NamespacedIdentifier spriteId;
     WORLD_SIZE_VARTYPE x;
     WORLD_SIZE_VARTYPE y;
     static std::vector<Tile> tiles;
