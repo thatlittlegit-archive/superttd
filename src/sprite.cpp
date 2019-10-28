@@ -32,9 +32,12 @@ Sprite Sprite::fromYaml(YAML::Node yaml)
 
 sf::Texture Sprite::getSfmlTexture()
 {
-    Texture image = getPixelData();
+    Texture sprite = getPixelData();
+    sf::Image image;
+    image.create(512, 512, (uint8_t*)sprite.data());
+
     sf::Texture texture;
-    if (!texture.loadFromMemory(&image, TEXTURE_SIZE * TEXTURE_SIZE))
+    if (!texture.loadFromImage(image, sf::IntRect(0, 0, 512, 512)))
         throw std::runtime_error("failed to load texture");
 
     return texture;

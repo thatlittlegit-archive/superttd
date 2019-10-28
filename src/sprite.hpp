@@ -22,6 +22,7 @@ struct Pixel {
     uint8_t r;
     uint8_t g;
     uint8_t b;
+    uint8_t a = 0xFF;
 };
 constexpr short TEXTURE_SIZE = 512;
 typedef std::array<std::array<Pixel, TEXTURE_SIZE>, TEXTURE_SIZE> Texture;
