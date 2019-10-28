@@ -13,6 +13,7 @@
 #pragma once
 #include "namespaced_id.hpp"
 #include <SFML/Graphics.hpp>
+#include <filesystem>
 #include <string>
 #include <vector>
 #include <yaml-cpp/yaml.h>
@@ -35,15 +36,16 @@ public:
     Texture& getPixelData();
     void setPixelData(const Texture&);
 
-    Sprite(NamespacedIdentifier id);
+    Sprite(std::filesystem::path folder, NamespacedIdentifier id);
 
-    static void loadSprites(std::string spriteFolder);
+    static void loadSprites(std::filesystem::path spriteFolder);
 
 private:
     static std::vector<Sprite> loadedSprites;
+    std::filesystem::path folder;
     Texture texture;
-    std::string filename;
 
-    static Sprite fromYaml(std::string provider, YAML::Node yaml);
+    static Sprite fromYaml(std::filesystem::path folder, std::string provider, YAML::Node yaml);
+    std::filesystem::path filename();
 };
 } // namespace SuperTTD

@@ -2,4 +2,4 @@ sprites:
 - provider: 'Earth'
   contents:
   - world: 'earth'
-    id: 'earth_test'
+    id: 'test'
