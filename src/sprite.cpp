@@ -13,21 +13,19 @@
 #include "sprite.hpp"
 #include <algorithm>
 #include <iterator>
+#include <filesystem>
 
 using std::string;
 
 namespace SuperTTD {
-Sprite::Sprite(string argFilename, unsigned int argWorld, string argId)
-    : filename(argFilename)
-    , world(argWorld)
-    , id(argId)
+Sprite::Sprite(NamespacedIdentifier argIdentifier)
+    : id(argIdentifier)
 {
 }
 
-Sprite Sprite::fromYaml(YAML::Node yaml)
+Sprite Sprite::fromYaml(std::string provider, YAML::Node yaml)
 {
-    return Sprite(yaml["world"].as<string>() + "/" + yaml["filename"].as<string>(),
-        yaml["worldid"].as<unsigned int>(), yaml["id"].as<string>());
+    return Sprite(NamespacedIdentifier(sprite(), provider, yaml["world"].as<string>(), yaml["id"].as<string>()));
 }
 
 sf::Texture Sprite::getSfmlTexture()
@@ -54,10 +52,18 @@ std::vector<SuperTTD::Sprite> Sprite::loadedSprites;
 
 void Sprite::loadSprites(string spriteFolder)
 {
-    YAML::Node sprites = YAML::LoadFile(spriteFolder + "/sprites.yml")["sprites"];
+    std::filesystem::path directory = spriteFolder;
+    std::filesystem::path file = "sprites.yml";
 
-    for (unsigned int index = 0; index < sprites.size(); index++) {
-        loadedSprites.push_back(Sprite::fromYaml(sprites[index]));
+    YAML::Node providers = YAML::LoadFile((directory / file).c_str())["sprites"];
+
+    for (YAML::Node providerNode : providers) {
+        YAML::Node sprites = providerNode["contents"];
+        std::string provider = providerNode["provider"].as<string>();
+
+        for (YAML::Node sprite : sprites) {
+            loadedSprites.push_back(Sprite::fromYaml(provider, sprite));
+        }
     }
 }
 } // namespace SuperTTD

@@ -118,6 +118,14 @@ NamespacedIdentifier::NamespacedIdentifier(std::string text)
     type = ResourceCode::lookupResource(wipType).value();
 }
 
+NamespacedIdentifier::NamespacedIdentifier(ResourceCode atype, std::string aprovider, std::optional<std::string> aworld, std::optional<std::string> aidentifier)
+    : type(atype)
+    , provider(aprovider)
+    , world(aworld)
+    , identifier(aidentifier)
+{
+}
+
 std::string NamespacedIdentifier::to_string()
 {
     return "[" + ResourceCode::lookupResource(type).value() + "]" + provider + ":" + (world.has_value() ? (world.value().empty() ? "#" : world.value()) : "#") + (identifier.has_value() ? ":" + identifier.value() : "");

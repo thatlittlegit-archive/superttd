@@ -27,7 +27,7 @@ int main()
     // TEMP Create a 255x255 map for development
     for (unsigned char x = 0; x < 255; x++) {
         for (unsigned char y = 0; y < 255; y++) {
-            SuperTTD::Tile::tiles.push_back(SuperTTD::Tile("TODO:earth:grass", x, y));
+            SuperTTD::Tile::tiles.push_back(SuperTTD::Tile("[sprite]base:earth:grass", x, y));
         }
     }
     while (window.isOpen()) {

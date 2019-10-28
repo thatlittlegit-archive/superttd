@@ -1,35 +1,5 @@
 sprites:
-- filename: 'Earth_test_v.0.png'
-  worldid: 0 # Earth
-  world: 'Earth'
-  id: 'earth_test'
-
-- filename: 'Earth_boulder_v.1.png'
-  worldid: 0 # Earth
-  world: 'Earth'
-  id: 'earth_boulder'
-
-- filename: 'Earth_flat_v.1.png'
-  worldid: 0 # Earth
-  world: 'Earth'
-  id: 'earth_flat'
-
-- filename: 'Moon_boulder_v.1.png'
-  worldid: 1 # Moon
-  world: 'Moon'
-  id: 'moon_boulder'
-
-- filename: 'Moon_crater_v.1.png'
-  worldid: 1 # Moon
-  world: 'Moon'
-  id: 'moon_crater'
-
-- filename: 'Moon_flat_v.1.png'
-  worldid: 1 # Moon
-  world: 'Moon'
-  id: 'moon_flat'
-
-- filename: 'Mars_flat_v.1.png'
-  worldid: 2 # Mars
-  world: 'Mars'
-  id: 'mars_flat'
+- provider: 'Earth'
+  contents:
+  - world: 'earth'
+    id: 'earth_test'

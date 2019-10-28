@@ -42,6 +42,7 @@ public:
     std::optional<std::string> world;
     std::optional<std::string> identifier;
     NamespacedIdentifier(std::string text);
+    NamespacedIdentifier(ResourceCode type, std::string provider, std::optional<std::string> world, std::optional<std::string> identifier);
     std::string to_string();
 };
 } // namespace SuperTTD

@@ -11,7 +11,7 @@ CC=$(CXX)
 LD=g++
 
 CXXFLAGS=$(WARNINGS) -c -std=c++17
-LDLIBS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp
+LDLIBS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp -lstdc++fs
 
 RM=rm
 CLANGFORMAT=clang-format

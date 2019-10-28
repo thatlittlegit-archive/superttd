@@ -29,22 +29,21 @@ typedef std::array<std::array<Pixel, TEXTURE_SIZE>, TEXTURE_SIZE> Texture;
 
 class Sprite {
 public:
-    std::string filename;
-    int world;
     NamespacedIdentifier id;
 
     sf::Texture getSfmlTexture();
     Texture& getPixelData();
     void setPixelData(const Texture&);
 
-    Sprite(std::string argFilename, unsigned int argWorld, std::string argId);
+    Sprite(NamespacedIdentifier id);
 
     static void loadSprites(std::string spriteFolder);
 
 private:
     static std::vector<Sprite> loadedSprites;
     Texture texture;
+    std::string filename;
 
-    static Sprite fromYaml(YAML::Node yaml);
+    static Sprite fromYaml(std::string provider, YAML::Node yaml);
 };
 } // namespace SuperTTD
