@@ -5,10 +5,7 @@
 # https://unlicense.org.
 #
 # Windows users: Run in (Git) Bash. If it doesn't work, make a bug report.
-WARNINGS=-Wall
-
-CC=$(CXX)
-LD=g++
+WARNINGS=-Wall -Wpedantic
 
 CXXFLAGS=$(WARNINGS) -c -std=c++17
 LDLIBS=-lsfml-system -lsfml-window -lsfml-graphics -lyaml-cpp -lstdc++fs
@@ -25,6 +22,7 @@ TARGETS= \
 all: superttd
 superttd: src/superttd
 	mv $^ $@
+src/superttd: CC=$(CXX)
 src/superttd: $(TARGETS)
 
 src/sprite.o: src/sprite.cpp src/sprite.hpp src/namespaced_id.hpp
